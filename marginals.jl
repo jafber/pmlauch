@@ -1,19 +1,23 @@
+module Marginals
+
+export d, s1, s2, p1, p2
+
 using Distributions
 
 function f1(s1, μ1, σ1)
-    return pdf(Normal(μ1, σ1), s1)
+    return pdf(Normal(μ1, sqrt(σ1)), s1)
 end
 
 function f2(s1, p1, β)
-    return pdf(Normal(s1, β), p1)
+    return pdf(Normal(s1, sqrt(β)), p1)
 end
 
 function f3(s2, μ2, σ2)
-    return pdf(Normal(μ2, σ2), s2)
+    return pdf(Normal(μ2, sqrt(σ2)), s2)
 end
 
 function f4(s2, p2, β)
-    return pdf(Normal(s2, β), p2)
+    return pdf(Normal(s2, sqrt(β)), p2)
 end
 
 function f5(p1, p2, d)
@@ -108,3 +112,4 @@ function d(N, μ1, μ2, σ1, σ2, β)
     return p_d
 end
 
+end
